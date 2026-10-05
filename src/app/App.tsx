@@ -867,7 +867,7 @@ function filesInWorkspaceTabs(tabs: readonly WorkspaceTab[]): FilePaneTab[] {
 
 /** Native sheet. `window.confirm` is swallowed when a macOS menu accelerator fires. */
 function confirmDiscardUnsaved(message: string): Promise<boolean> {
-  return ask(message, { title: "MonoCode", kind: "warning" });
+  return ask(message, { title: "void", kind: "warning" });
 }
 
 function titleTabsEqual(a: TitleTab[], b: TitleTab[]): boolean {
@@ -2308,7 +2308,7 @@ function Workspace({
     if (!document) {
       void message(
         "Release notes for this version are not available in this build.",
-        { title: "MonoCode" },
+        { title: "void" },
       );
       return;
     }
@@ -4783,7 +4783,7 @@ function Workspace({
           } catch (error) {
             void message(
               `The session was deleted. Its worktree was kept.\n\n${String(error)}\n\nYou can manage it in Settings → Worktrees.`,
-              { title: "MonoCode", kind: "warning" },
+              { title: "void", kind: "warning" },
             );
           }
         }
@@ -4791,7 +4791,7 @@ function Workspace({
       } catch (error) {
         const detail = error instanceof Error ? error.message : String(error);
         void message(`Could not ${mode} this conversation.\n\n${detail}`, {
-          title: "MonoCode",
+          title: "void",
           kind: "error",
         });
         return false;
@@ -4827,7 +4827,7 @@ function Workspace({
         void message(
           `Could not unarchive this conversation.\n\n${String(error)}`,
           {
-            title: "MonoCode",
+            title: "void",
             kind: "error",
           },
         );
@@ -4956,7 +4956,7 @@ function Workspace({
           void refreshHistory(sidebarCwd);
           void message(
             `Could not update this conversation's GitHub link.\n\n${String(error)}`,
-            { title: "MonoCode", kind: "error" },
+            { title: "void", kind: "error" },
           );
         },
       );
@@ -6232,7 +6232,7 @@ function Workspace({
         operatorCommand.matched || operatorEnabledInThread(current.blocks);
       const promptText = operatorCommand.matched
         ? operatorCommand.text.trim() ||
-          "Explain what you can do in MonoCode with the app CLI."
+          "Explain what you can do in void with the app CLI."
         : submittedText;
       const rawCommand =
         !operatorCommand.matched &&
@@ -9234,7 +9234,7 @@ function Workspace({
           source.orchestrationLeadId ||
           orchestrator.run(source.id)
         )
-          throw new Error("This session cannot use the MonoCode app CLI");
+          throw new Error("This session cannot use the void app CLI");
         const key = `${source.id}:${payload.requestId}`;
         const signature = JSON.stringify([payload.action, payload.input]);
         const previous = appReceipts.current.get(key);

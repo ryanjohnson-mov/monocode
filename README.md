@@ -1,3 +1,40 @@
+# void
+
+A personal fork of [MonoCode](https://github.com/hardbeat920/monocode).
+
+## Local development
+
+```bash
+npm ci
+npm run tauri dev
+```
+
+Save frontend files to see changes in the desktop window. Rust edits rebuild and restart it.
+Stop development with Control + C in the terminal.
+
+## Build on macOS
+
+```bash
+npm run build:macos
+```
+
+The app is `target/release/bundle/macos/void.app`.
+
+## Separate application data
+
+Release and development builds use the app identifier `com.ryanjohnson.void`.
+On macOS, sessions, notes, connections, and app settings are stored under
+`~/Library/Application Support/com.ryanjohnson.void/`, separately from MonoCode.
+The app starts with fresh data; it does not copy or migrate MonoCode's database.
+
+Agent CLIs, their login credentials, selected project files, and remote MonoCode
+Host installations remain shared system resources. Both apps can access the
+same projects, so agent edits to a shared checkout affect that checkout.
+
+---
+
+Original project documentation follows.
+
 <p align="center">
   <img src="public/monocode.png" alt="MonoCode" width="88" />
 </p>

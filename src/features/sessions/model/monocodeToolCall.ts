@@ -110,7 +110,7 @@ export function monoCodeToolCall(block: Block): MonoCodeToolCall | undefined {
   return { action, label: ACTION_LABELS[action], command };
 }
 
-/** A group of only MonoCode calls can be named for the app, not the shell. */
+/** A group of only void calls can be named for the app, not the shell. */
 export function monoCodeWorkSummary(
   steps: Block[],
   live: boolean,
@@ -124,5 +124,5 @@ export function monoCodeWorkSummary(
   if (calls.length === 0 || calls.some((block) => !monoCodeToolCall(block))) {
     return undefined;
   }
-  return live ? "Using MonoCode" : "Used MonoCode";
+  return live ? "Using void" : "Used void";
 }

@@ -3170,7 +3170,7 @@ function MonoCodeMark({ className = "size-4" }: { className?: string }) {
   return <img src="/monocode.png" alt="" className={`shrink-0 ${className}`} />;
 }
 
-/** MonoCode commands read like the other activity rows; failures expose their output. */
+/** void commands read like the other activity rows; failures expose their output. */
 function MonoCodeCallRow({
   block,
   call,
@@ -3221,7 +3221,7 @@ function MonoCodeCallRow({
         <button
           type="button"
           aria-expanded={errorOpen}
-          aria-label={`${errorOpen ? "Hide" : "Show"} error details for MonoCode: ${call.label}`}
+          aria-label={`${errorOpen ? "Hide" : "Show"} error details for void: ${call.label}`}
           onClick={() => setErrorOpen((value) => !value)}
           className="flex w-full min-w-0 items-center gap-1.5 py-1 text-left"
         >
